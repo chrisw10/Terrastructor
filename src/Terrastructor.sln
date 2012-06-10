@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CBE27B
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byte.Terrastructor.Terrain.Model", "Byte.Terrastructor.Terrain.Model\Byte.Terrastructor.Terrain.Model.csproj", "{3AC84830-69B5-4DBB-B758-FDBDC82622C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byte.Terrastructor.Terrain.Model.Tests", "Byte.Terrastructor.Terrain.Model.Tests\Byte.Terrastructor.Terrain.Model.Tests.csproj", "{9BB5541B-5CC1-42BB-BDE2-9C3CDF9FDCAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +33,22 @@ Global
 		{28FC8743-B8ED-46D5-BD01-171F96544AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28FC8743-B8ED-46D5-BD01-171F96544AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28FC8743-B8ED-46D5-BD01-171F96544AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC84830-69B5-4DBB-B758-FDBDC82622C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC84830-69B5-4DBB-B758-FDBDC82622C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC84830-69B5-4DBB-B758-FDBDC82622C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC84830-69B5-4DBB-B758-FDBDC82622C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB5541B-5CC1-42BB-BDE2-9C3CDF9FDCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB5541B-5CC1-42BB-BDE2-9C3CDF9FDCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB5541B-5CC1-42BB-BDE2-9C3CDF9FDCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB5541B-5CC1-42BB-BDE2-9C3CDF9FDCAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{28FC8743-B8ED-46D5-BD01-171F96544AEA} = {4C6700A2-82EF-4C3F-8900-232449815A1B}
+		{9BB5541B-5CC1-42BB-BDE2-9C3CDF9FDCAF} = {4C6700A2-82EF-4C3F-8900-232449815A1B}
 		{9CCB0CB4-2983-432F-BC43-6F805FA40622} = {98D96A98-A529-4423-9413-E6F92A491D6A}
+		{3AC84830-69B5-4DBB-B758-FDBDC82622C9} = {98D96A98-A529-4423-9413-E6F92A491D6A}
 	EndGlobalSection
 EndGlobal
