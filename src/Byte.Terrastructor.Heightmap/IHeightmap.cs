@@ -1,4 +1,6 @@
-﻿namespace Byte.Terrastructor.Heightmap
+﻿using System.Drawing;
+
+namespace Byte.Terrastructor.Heightmap
 {
     /// <summary>
     /// Used to implement different heightmap sources.  Examples include bitmap sources or DEM sources.
@@ -8,5 +10,6 @@
         int Width { get; }
         int Height { get; }
         int this[int x, int y] { get; }
+        Image Image { get; }
     }
 }

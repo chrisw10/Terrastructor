@@ -84,5 +84,10 @@ namespace Byte.Terrastructor.Heightmap
                 return _heightPoints[x, y];
             }
         }
+
+        public Image Image
+        {
+            get { return _heightmapBitmap; }
+        }
     }
 }
