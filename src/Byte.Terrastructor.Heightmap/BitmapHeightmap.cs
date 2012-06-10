@@ -5,7 +5,11 @@ using System.Runtime.InteropServices;
 
 namespace Byte.Terrastructor.Heightmap
 {
-    public class Heightmap
+    /// <summary>
+    /// This class is capable of generating heightmaps from any of image formats supported by System.Drawing.Bitmap
+    /// It utilizes the red channel of the image once it has been converted into a 24-bit format internally.
+    /// </summary>
+    public class BitmapHeightmap : IHeightmap
     {
         private const int BytesPerPixel = 3;
 
@@ -28,7 +32,7 @@ namespace Byte.Terrastructor.Heightmap
             }
         }
 
-        public Heightmap(string filename)
+        public BitmapHeightmap(string filename)
         {
             //NOTE: The second parameter is false in order to turn off "color correction" which is used by default.
             _heightmapBitmap = new Bitmap(filename, false);
@@ -64,9 +68,11 @@ namespace Byte.Terrastructor.Heightmap
                     _heightPoints[xPosition, yPosition] = rgbData[index];
                 }
             }
+
+            _heightmapBitmap.UnlockBits(data);
         }
 
-        public byte this[int x, int y]
+        public int this[int x, int y]
         {
             get
             {
