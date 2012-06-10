@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Byte.Terrastructor.Terrain.Model
 {
     public class TextureGroup
     {
-        private readonly List<Texture> _textures = new List<Texture>();
+        private readonly HashSet<Texture> _textures = new HashSet<Texture>();
 
         public event Action<Texture> TextureAdded;
         public event Action<Texture> TextureRemoved;
@@ -23,11 +21,21 @@ namespace Byte.Terrastructor.Terrain.Model
         public void AddTexture(Texture textureToAdd)
         {
             _textures.Add(textureToAdd);
+
+            if(TextureAdded != null)
+            {
+                TextureAdded(textureToAdd);
+            }
         }
 
         public void RemoveTexture(Texture textureToRemove)
         {
             _textures.Remove(textureToRemove);
+
+            if(TextureRemoved != null)
+            {
+                TextureRemoved(textureToRemove);
+            }
         }
     }
 }

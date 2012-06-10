@@ -31,5 +31,34 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
 
             Assert.IsFalse(textureGroup.Textures.Contains(texture));
         }
+
+        [Test]
+        public void TestTextureAddedEvent()
+        {
+            var texture = new Texture(0, 0, Rotation.Any);
+            var textureGroup = new TextureGroup();
+            var wasTextureAdded = false;
+
+            textureGroup.TextureAdded += addedTexture => wasTextureAdded = addedTexture == texture;
+
+            textureGroup.AddTexture(texture);
+
+            Assert.IsTrue(wasTextureAdded);
+        }
+
+        [Test]
+        public void TestTextureRemovedEvent()
+        {
+            var texture = new Texture(0, 0, Rotation.Any);
+            var textureGroup = new TextureGroup();
+            var wasTextureRemoved = false;
+
+            textureGroup.TextureRemoved += addedTexture => wasTextureRemoved = addedTexture == texture;
+
+            textureGroup.AddTexture(texture);
+            textureGroup.RemoveTexture(texture);
+
+            Assert.IsTrue(wasTextureRemoved); 
+        }
     }
 }
