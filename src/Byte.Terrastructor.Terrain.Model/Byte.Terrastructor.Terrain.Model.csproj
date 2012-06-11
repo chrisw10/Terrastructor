@@ -42,10 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeightmapTextureGroupResolver.cs" />
+    <Compile Include="ITextureGroupResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rotation.cs" />
     <Compile Include="Texture.cs" />
     <Compile Include="TextureGroup.cs" />
+    <Compile Include="TextureGroupRange.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Byte.Terrastructor.Heightmap\Byte.Terrastructor.Heightmap.csproj">
+      <Project>{9CCB0CB4-2983-432F-BC43-6F805FA40622}</Project>
+      <Name>Byte.Terrastructor.Heightmap</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
