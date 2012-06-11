@@ -24,19 +24,23 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
             var random = new Random();
 
             //Upper-left quadrant
-            mock.Setup(heightmap => heightmap[It.IsInRange(0, 3, Range.Inclusive), It.IsInRange(0, 3, Range.Inclusive)])
+            mock.Setup(heightmap => heightmap[It.IsInRange(0, 3, Range.Inclusive),
+                                              It.IsInRange(0, 3, Range.Inclusive)])
                 .Returns(() => random.Next(0, 50));
 
             //Upper-right quadrant
-            mock.Setup(heightmap => heightmap[It.IsInRange(4, 7, Range.Inclusive), It.IsInRange(0, 3, Range.Inclusive)])
+            mock.Setup(heightmap => heightmap[It.IsInRange(4, 7, Range.Inclusive),
+                                              It.IsInRange(0, 3, Range.Inclusive)])
                 .Returns(() => random.Next(51, 150));
 
             //Lower-left quadrant
-            mock.Setup(heightmap => heightmap[It.IsInRange(0, 3, Range.Inclusive), It.IsInRange(4, 7, Range.Inclusive)])
+            mock.Setup(heightmap => heightmap[It.IsInRange(0, 3, Range.Inclusive),
+                                              It.IsInRange(4, 7, Range.Inclusive)])
                 .Returns(() => random.Next(151, 200));
 
             //Lower-right quadrant
-            mock.Setup(heightmap => heightmap[It.IsInRange(4, 7, Range.Inclusive), It.IsInRange(4, 7, Range.Inclusive)])
+            mock.Setup(heightmap => heightmap[It.IsInRange(4, 7, Range.Inclusive),
+                                              It.IsInRange(4, 7, Range.Inclusive)])
                 .Returns(() => random.Next(201, 255));
 
             _mockHeightmap = mock.Object;
@@ -46,8 +50,19 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         public void TestGetTextureGroupForPoint()
         {
             var textureGroupResolver = new HeightmapTextureGroupResolver(_mockHeightmap);
+            var lowerRightTextureGroup = new TextureGroup();
+            var upperLeftTextureGroup = new TextureGroup();
+
+            textureGroupResolver.AddTextureGroupRange(new TextureGroupRange(0, 50, upperLeftTextureGroup));
+            textureGroupResolver.AddTextureGroupRange(new TextureGroupRange(51, 150, new TextureGroup()));
+            textureGroupResolver.AddTextureGroupRange(new TextureGroupRange(151, 200, new TextureGroup()));
+            textureGroupResolver.AddTextureGroupRange(new TextureGroupRange(201, 255, lowerRightTextureGroup));
 
             var textureGroup = textureGroupResolver.GetTextureGroupForPoint(0, 0);
+            Assert.AreSame(upperLeftTextureGroup, textureGroup);
+
+            textureGroup = textureGroupResolver.GetTextureGroupForPoint(5, 5);
+            Assert.AreSame(lowerRightTextureGroup, textureGroup);
         }
     }
 }

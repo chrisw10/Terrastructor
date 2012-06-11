@@ -10,6 +10,8 @@ namespace Byte.Terrastructor.Terrain.Model
         public event Action<Texture> TextureAdded;
         public event Action<Texture> TextureRemoved;
 
+        public string Name { get; set; }
+
         public IEnumerable<Texture> Textures
         {
             get

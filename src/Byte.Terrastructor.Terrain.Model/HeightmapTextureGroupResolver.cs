@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Byte.Terrastructor.Heightmap;
 
 namespace Byte.Terrastructor.Terrain.Model
 {
     public class HeightmapTextureGroupResolver : ITextureGroupResolver
     {
-        private IHeightmap _heightmap;
+        private readonly IHeightmap _heightmap;
+        private readonly List<TextureGroupRange> _textureGroupRanges = new List<TextureGroupRange>();
 
         public HeightmapTextureGroupResolver(IHeightmap heightmap)
         {
@@ -14,12 +17,17 @@ namespace Byte.Terrastructor.Terrain.Model
 
         public TextureGroup GetTextureGroupForPoint(int x, int y)
         {
-            throw new NotImplementedException();
+            var height = _heightmap[x, y];
+            var range = _textureGroupRanges.FirstOrDefault(textureGroupRange =>
+                                                           textureGroupRange.LowerBound <= height &&
+                                                           textureGroupRange.UpperBound >= height);
+
+            return range == null ? null : range.TextureGroup;
         }
 
         public void AddTextureGroupRange(TextureGroupRange textureGroupRange)
         {
-            throw new NotImplementedException();
+            _textureGroupRanges.Add(textureGroupRange);
         }
 
         public void RemoveTextureGroupRange(TextureGroupRange textureGroupRange)
