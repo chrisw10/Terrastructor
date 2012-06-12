@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Byte.Terrastructor.Heightmap;
 
@@ -8,31 +7,32 @@ namespace Byte.Terrastructor.Terrain.Model
     public class HeightmapTextureGroupResolver : ITextureGroupResolver
     {
         private readonly IHeightmap _heightmap;
-        private readonly List<TextureGroupRange> _textureGroupRanges = new List<TextureGroupRange>();
+        private readonly ITextureGroupRepository<TextureGroupRange> _textureGroupRepository;
 
-        public HeightmapTextureGroupResolver(IHeightmap heightmap)
+        public HeightmapTextureGroupResolver(IHeightmap heightmap, ITextureGroupRepository<TextureGroupRange> textureGroupRepository)
         {
+            if(heightmap == null)
+            {
+                throw new ArgumentNullException("heightmap");
+            }
+
+            if(textureGroupRepository == null)
+            {
+                throw new ArgumentNullException("textureGroupRepository");
+            }
+
             _heightmap = heightmap;
+            _textureGroupRepository = textureGroupRepository;
         }
 
         public TextureGroup GetTextureGroupForPoint(int x, int y)
         {
             var height = _heightmap[x, y];
-            var range = _textureGroupRanges.FirstOrDefault(textureGroupRange =>
-                                                           textureGroupRange.LowerBound <= height &&
-                                                           textureGroupRange.UpperBound >= height);
+            var range = _textureGroupRepository.TextureGroups.FirstOrDefault(textureGroupRange =>
+                                                                             textureGroupRange.LowerBound <= height &&
+                                                                             textureGroupRange.UpperBound >= height);
 
-            return range == null ? null : range.TextureGroup;
-        }
-
-        public void AddTextureGroupRange(TextureGroupRange textureGroupRange)
-        {
-            _textureGroupRanges.Add(textureGroupRange);
-        }
-
-        public void RemoveTextureGroupRange(TextureGroupRange textureGroupRange)
-        {
-            throw new NotImplementedException();
+            return range;
         }
     }
 }
