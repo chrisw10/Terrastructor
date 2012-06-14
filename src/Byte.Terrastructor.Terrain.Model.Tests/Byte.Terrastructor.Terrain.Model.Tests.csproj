@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HeightmapTextureGroupResolverTest.cs" />
+    <Compile Include="TextureGroupRangeRepositoryTest.cs" />
     <Compile Include="TextureGroupRangeTest.cs" />
     <Compile Include="TextureGroupTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

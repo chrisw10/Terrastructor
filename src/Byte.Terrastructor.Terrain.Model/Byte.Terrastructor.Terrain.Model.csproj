@@ -50,6 +50,7 @@
     <Compile Include="Texture.cs" />
     <Compile Include="TextureGroup.cs" />
     <Compile Include="TextureGroupRange.cs" />
+    <Compile Include="TextureGroupRangeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Byte.Terrastructor.Heightmap\Byte.Terrastructor.Heightmap.csproj">

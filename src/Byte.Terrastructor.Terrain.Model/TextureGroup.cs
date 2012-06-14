@@ -32,6 +32,11 @@ namespace Byte.Terrastructor.Terrain.Model
 
         public void RemoveTexture(Texture textureToRemove)
         {
+            if(!_textures.Contains(textureToRemove))
+            {
+                return;
+            }
+
             _textures.Remove(textureToRemove);
 
             if(TextureRemoved != null)

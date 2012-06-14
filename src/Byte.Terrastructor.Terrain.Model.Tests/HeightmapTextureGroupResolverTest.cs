@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Byte.Terrastructor.Heightmap;
 using Moq;
 using NUnit.Framework;
@@ -46,22 +44,22 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
 
             //Upper-left quadrant
             mock.Setup(heightmap => heightmap[It.IsInRange(0, 3, Range.Inclusive),
-                                                       It.IsInRange(0, 3, Range.Inclusive)])
+                                              It.IsInRange(0, 3, Range.Inclusive)])
                 .Returns(() => random.Next(0, 50));
 
             //Upper-right quadrant
             mock.Setup(heightmap => heightmap[It.IsInRange(4, 7, Range.Inclusive),
-                                                       It.IsInRange(0, 3, Range.Inclusive)])
+                                              It.IsInRange(0, 3, Range.Inclusive)])
                 .Returns(() => random.Next(51, 150));
 
             //Lower-left quadrant
             mock.Setup(heightmap => heightmap[It.IsInRange(0, 3, Range.Inclusive),
-                                                       It.IsInRange(4, 7, Range.Inclusive)])
+                                              It.IsInRange(4, 7, Range.Inclusive)])
                 .Returns(() => random.Next(151, 200));
 
             //Lower-right quadrant
             mock.Setup(heightmap => heightmap[It.IsInRange(4, 7, Range.Inclusive),
-                                                       It.IsInRange(4, 7, Range.Inclusive)])
+                                              It.IsInRange(4, 7, Range.Inclusive)])
                 .Returns(() => random.Next(201, 255));
 
             _mockHeightmap = mock.Object;
@@ -93,6 +91,27 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
 
             textureGroup = textureGroupResolver.GetTextureGroupForPoint(5, 5);
             Assert.AreSame(lowerRightTextureGroup, textureGroup);
+        }
+
+        [Test]
+        public void TestGetTextureGroupForInvalidPoint()
+        {
+            var textureGroupResolver = new HeightmapTextureGroupResolver(_mockHeightmap, _mockTextureGroupRepository);
+            var upperLeftTextureGroup = new TextureGroupRange(0, 50);
+            var upperRightTextureGroup = new TextureGroupRange(51, 150);
+            var lowerLeftTextureGroup = new TextureGroupRange(151, 200);
+            var lowerRightTextureGroup = new TextureGroupRange(201, 255);
+
+            _mockTextureGroupRepository.AddTextureGroup(upperLeftTextureGroup);
+            _mockTextureGroupRepository.AddTextureGroup(upperRightTextureGroup);
+            _mockTextureGroupRepository.AddTextureGroup(lowerLeftTextureGroup);
+            _mockTextureGroupRepository.AddTextureGroup(lowerRightTextureGroup);
+
+            var textureGroup = textureGroupResolver.GetTextureGroupForPoint(-5, -5);
+            Assert.AreSame(upperLeftTextureGroup, textureGroup);
+
+            textureGroup = textureGroupResolver.GetTextureGroupForPoint(10, 10);
+            Assert.AreSame(upperLeftTextureGroup, textureGroup);
         }
     }
 }
