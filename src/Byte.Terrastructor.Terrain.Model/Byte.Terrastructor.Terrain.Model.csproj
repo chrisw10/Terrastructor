@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeightmapTextureGroupProcessor.cs" />
     <Compile Include="HeightmapTextureGroupResolver.cs" />
     <Compile Include="ITextureGroupRepository.cs" />
     <Compile Include="ITextureGroupResolver.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="TextureGroup.cs" />
     <Compile Include="TextureGroupRange.cs" />
     <Compile Include="TextureGroupRangeRepository.cs" />
+    <Compile Include="TextureGroupTransition.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Byte.Terrastructor.Heightmap\Byte.Terrastructor.Heightmap.csproj">
