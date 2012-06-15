@@ -46,6 +46,7 @@
     <Compile Include="HeightmapTextureGroupResolver.cs" />
     <Compile Include="ITextureGroupRepository.cs" />
     <Compile Include="ITextureGroupResolver.cs" />
+    <Compile Include="ITextureGroupTransitionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rotation.cs" />
     <Compile Include="Texture.cs" />
