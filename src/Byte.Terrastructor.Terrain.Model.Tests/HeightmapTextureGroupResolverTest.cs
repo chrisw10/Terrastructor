@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Byte.Terrastructor.Heightmap;
+using Byte.Terrastructor.Terrain.Model.Interface;
 using Moq;
 using NUnit.Framework;
 
@@ -25,10 +26,10 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
 
             var textureGroupRanges = new List<TextureGroupRange>();
 
-            mock.Setup(textureGroupRepository => textureGroupRepository.AddTextureGroup(It.IsAny<TextureGroupRange>()))
+            mock.Setup(textureGroupRepository => textureGroupRepository.Add(It.IsAny<TextureGroupRange>()))
                 .Callback((TextureGroupRange textureGroup) => textureGroupRanges.Add(textureGroup));
 
-            mock.SetupGet(textureGroupRepository => textureGroupRepository.TextureGroups).Returns(textureGroupRanges);
+            mock.SetupGet(textureGroupRepository => textureGroupRepository.Items).Returns(textureGroupRanges);
 
             _mockTextureGroupRepository = mock.Object;
         }
@@ -74,10 +75,10 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
             var lowerLeftTextureGroup = new TextureGroupRange(151, 200);
             var lowerRightTextureGroup = new TextureGroupRange(201, 255);
 
-            _mockTextureGroupRepository.AddTextureGroup(upperLeftTextureGroup);
-            _mockTextureGroupRepository.AddTextureGroup(upperRightTextureGroup);
-            _mockTextureGroupRepository.AddTextureGroup(lowerLeftTextureGroup);
-            _mockTextureGroupRepository.AddTextureGroup(lowerRightTextureGroup);
+            _mockTextureGroupRepository.Add(upperLeftTextureGroup);
+            _mockTextureGroupRepository.Add(upperRightTextureGroup);
+            _mockTextureGroupRepository.Add(lowerLeftTextureGroup);
+            _mockTextureGroupRepository.Add(lowerRightTextureGroup);
 
 
             var textureGroup = textureGroupResolver.GetTextureGroupForPoint(0, 0);
@@ -102,10 +103,10 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
             var lowerLeftTextureGroup = new TextureGroupRange(151, 200);
             var lowerRightTextureGroup = new TextureGroupRange(201, 255);
 
-            _mockTextureGroupRepository.AddTextureGroup(upperLeftTextureGroup);
-            _mockTextureGroupRepository.AddTextureGroup(upperRightTextureGroup);
-            _mockTextureGroupRepository.AddTextureGroup(lowerLeftTextureGroup);
-            _mockTextureGroupRepository.AddTextureGroup(lowerRightTextureGroup);
+            _mockTextureGroupRepository.Add(upperLeftTextureGroup);
+            _mockTextureGroupRepository.Add(upperRightTextureGroup);
+            _mockTextureGroupRepository.Add(lowerLeftTextureGroup);
+            _mockTextureGroupRepository.Add(lowerRightTextureGroup);
 
             var textureGroup = textureGroupResolver.GetTextureGroupForPoint(-5, -5);
             Assert.AreSame(upperLeftTextureGroup, textureGroup);

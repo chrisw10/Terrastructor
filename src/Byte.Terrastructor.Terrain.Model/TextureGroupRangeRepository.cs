@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Byte.Terrastructor.Terrain.Model.Interface;
 
 namespace Byte.Terrastructor.Terrain.Model
 {
@@ -10,39 +9,39 @@ namespace Byte.Terrastructor.Terrain.Model
     //Maybe you swap out the view models at the top level according to the mode the user selects?
     public class TextureGroupRangeRepository : ITextureGroupRepository<TextureGroupRange>
     {
-        private readonly List<TextureGroupRange> _textureGroupRanges = new List<TextureGroupRange>();
+        private readonly List<TextureGroupRange> _itemRanges = new List<TextureGroupRange>();
 
-        public event Action<TextureGroupRange> TextureGroupAdded;
-        public event Action<TextureGroupRange> TextureGroupRemoved;
+        public event Action<TextureGroupRange> ItemAdded;
+        public event Action<TextureGroupRange> ItemRemoved;
 
-        public void AddTextureGroup(TextureGroupRange textureGroup)
+        public void Add(TextureGroupRange textureGroup)
         {
-            _textureGroupRanges.Add(textureGroup);
+            _itemRanges.Add(textureGroup);
 
-            if(TextureGroupAdded != null)
+            if(ItemAdded != null)
             {
-                TextureGroupAdded(textureGroup);
+                ItemAdded(textureGroup);
             }
         }
 
-        public void RemoveTextureGroup(TextureGroupRange textureGroup)
+        public void Remove(TextureGroupRange textureGroup)
         {
-            if (!_textureGroupRanges.Contains(textureGroup))
+            if (!_itemRanges.Contains(textureGroup))
             {
                 return;
             }
 
-            _textureGroupRanges.Remove(textureGroup);
+            _itemRanges.Remove(textureGroup);
 
-            if (TextureGroupRemoved != null)
+            if (ItemRemoved != null)
             {
-                TextureGroupRemoved(textureGroup);
+                ItemRemoved(textureGroup);
             }
         }
 
-        public IEnumerable<TextureGroupRange> TextureGroups
+        public IEnumerable<TextureGroupRange> Items
         {
-            get { return _textureGroupRanges; }
+            get { return _itemRanges; }
         }
     }
 }

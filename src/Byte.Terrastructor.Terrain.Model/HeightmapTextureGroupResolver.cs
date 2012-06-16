@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Byte.Terrastructor.Heightmap;
+using Byte.Terrastructor.Terrain.Model.Interface;
 
 namespace Byte.Terrastructor.Terrain.Model
 {
@@ -28,7 +29,7 @@ namespace Byte.Terrastructor.Terrain.Model
         public TextureGroup GetTextureGroupForPoint(int x, int y)
         {
             var height = _heightmap[x, y];
-            var range = _textureGroupRepository.TextureGroups.FirstOrDefault(textureGroupRange =>
+            var range = _textureGroupRepository.Items.FirstOrDefault(textureGroupRange =>
                                                                              textureGroupRange.LowerBound <= height &&
                                                                              textureGroupRange.UpperBound >= height);
 

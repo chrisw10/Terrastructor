@@ -1,47 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using Byte.Terrastructor.Terrain.Model.Interface;
 
 namespace Byte.Terrastructor.Terrain.Model
 {
-    public class TextureGroup
+    public class TextureGroup : IRepository<Texture>
     {
-        private readonly HashSet<Texture> _textures = new HashSet<Texture>();
+        private readonly HashSet<Texture> _items = new HashSet<Texture>();
 
-        public event Action<Texture> TextureAdded;
-        public event Action<Texture> TextureRemoved;
+        public event Action<Texture> ItemAdded;
+        public event Action<Texture> ItemRemoved;
 
         public string Name { get; set; }
 
-        public IEnumerable<Texture> Textures
+        public IEnumerable<Texture> Items
         {
             get
             {
-                return _textures;
+                return _items;
             }
         }
 
-        public void AddTexture(Texture textureToAdd)
+        public void Add(Texture textureToAdd)
         {
-            _textures.Add(textureToAdd);
+            _items.Add(textureToAdd);
 
-            if(TextureAdded != null)
+            if(ItemAdded != null)
             {
-                TextureAdded(textureToAdd);
+                ItemAdded(textureToAdd);
             }
         }
 
-        public void RemoveTexture(Texture textureToRemove)
+        public void Remove(Texture textureToRemove)
         {
-            if(!_textures.Contains(textureToRemove))
+            if(!_items.Contains(textureToRemove))
             {
                 return;
             }
 
-            _textures.Remove(textureToRemove);
+            _items.Remove(textureToRemove);
 
-            if(TextureRemoved != null)
+            if(ItemRemoved != null)
             {
-                TextureRemoved(textureToRemove);
+                ItemRemoved(textureToRemove);
             }
         }
     }

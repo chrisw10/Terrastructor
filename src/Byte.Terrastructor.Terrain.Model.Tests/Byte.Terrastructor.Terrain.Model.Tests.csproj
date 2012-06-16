@@ -54,7 +54,7 @@
     <Compile Include="TextureGroupRangeTest.cs" />
     <Compile Include="TextureGroupTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextureGroupTransitionTest.cs" />
+    <Compile Include="TextureGroupTransitionRepositoryTest.cs" />
     <Compile Include="TextureTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Byte.Terrastructor.Terrain.Model.Tests
 {
     [TestFixture]
-    public class TextureGroupTransitionTest
+    public class TextureGroupTransitionRepositoryTest
     {
     }
 }

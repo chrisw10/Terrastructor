@@ -15,9 +15,9 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
             var texture = new Texture(0, 0, Rotation.Any);
 
             var textureGroup = new TextureGroup();
-            textureGroup.AddTexture(texture);
+            textureGroup.Add(texture);
 
-            Assert.IsTrue(textureGroup.Textures.Contains(texture));
+            Assert.IsTrue(textureGroup.Items.Contains(texture));
         }
 
         [Test]
@@ -25,11 +25,11 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         {
             var texture = new Texture(0, 0, Rotation.Any);
             var textureGroup = new TextureGroup();
-            textureGroup.AddTexture(texture);
+            textureGroup.Add(texture);
 
-            textureGroup.RemoveTexture(texture);
+            textureGroup.Remove(texture);
 
-            Assert.IsFalse(textureGroup.Textures.Contains(texture));
+            Assert.IsFalse(textureGroup.Items.Contains(texture));
         }
 
         [Test]
@@ -39,9 +39,9 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
             var textureGroup = new TextureGroup();
             var wasTextureAdded = false;
 
-            textureGroup.TextureAdded += addedTexture => wasTextureAdded = addedTexture == texture;
+            textureGroup.ItemAdded += addedTexture => wasTextureAdded = addedTexture == texture;
 
-            textureGroup.AddTexture(texture);
+            textureGroup.Add(texture);
 
             Assert.IsTrue(wasTextureAdded);
         }
@@ -53,10 +53,10 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
             var textureGroup = new TextureGroup();
             var wasTextureRemoved = false;
 
-            textureGroup.TextureRemoved += addedTexture => wasTextureRemoved = addedTexture == texture;
+            textureGroup.ItemRemoved += addedTexture => wasTextureRemoved = addedTexture == texture;
 
-            textureGroup.AddTexture(texture);
-            textureGroup.RemoveTexture(texture);
+            textureGroup.Add(texture);
+            textureGroup.Remove(texture);
 
             Assert.IsTrue(wasTextureRemoved); 
         }
