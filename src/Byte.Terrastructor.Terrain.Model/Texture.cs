@@ -1,15 +1,11 @@
 ﻿using System;
 using Byte.Terrastructor.Terrain.Model.Interface;
 
-namespace Byte.Terrastructor.Terrain.Model.Interface
-{
-}
-
 namespace Byte.Terrastructor.Terrain.Model
 {
-    public class Texture : IEquatable<Texture>, IProbabilityWeighted
+    public class Texture : IEquatable<Texture>, IProbabilityWeightedItem
     {
-        public Texture(int number, double probabilityWeight, Rotation rotation)
+        public Texture(int number, int probabilityWeight, Rotation rotation)
         {
             Number = number;
             ProbabilityWeight = probabilityWeight;
@@ -17,7 +13,7 @@ namespace Byte.Terrastructor.Terrain.Model
         }
 
         public int Number { get; private set; }
-        public double ProbabilityWeight { get; private set; }
+        public int ProbabilityWeight { get; private set; }
         public Rotation Rotation { get; private set; }
 
         public bool Equals(Texture other)
