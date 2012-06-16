@@ -1,8 +1,13 @@
 ﻿using System;
+using Byte.Terrastructor.Terrain.Model.Interface;
+
+namespace Byte.Terrastructor.Terrain.Model.Interface
+{
+}
 
 namespace Byte.Terrastructor.Terrain.Model
 {
-    public class Texture : IEquatable<Texture>
+    public class Texture : IEquatable<Texture>, IProbabilityWeighted
     {
         public Texture(int number, double probabilityWeight, Rotation rotation)
         {
