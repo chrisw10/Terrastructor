@@ -29,6 +29,11 @@ namespace Byte.Terrastructor.Terrain.Model
 
         public T NextItem()
         {
+            if(_distribution.Count == 0)
+            {
+                return default(T);
+            }
+
             var next = _randomNumberGenerator.Generate(0, _distribution.Count);
             return _distribution[next];
         }

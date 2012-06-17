@@ -94,5 +94,14 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
 
             Assert.IsTrue(expectedItems.SequenceEqual(actualItems));
         }
+
+        [Test]
+        public void TestGetRandomItemsWithEmptyItemSet()
+        {
+            var randomItemRetriever = new RandomItemRetriever<IProbabilityWeightedItem>(_randomGenerator,
+                                                                                        Enumerable.Empty<IProbabilityWeightedItem>());
+
+            randomItemRetriever.NextItem();
+        }
     }
 }
