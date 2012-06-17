@@ -52,6 +52,7 @@
     <Compile Include="Interface\ITextureGroupTransitionRepository.cs" />
     <Compile Include="Interface\ITextureProcessor.cs" />
     <Compile Include="Interface\IProbabilityWeightedItem.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomItemRetriever.cs" />
     <Compile Include="Rotation.cs" />

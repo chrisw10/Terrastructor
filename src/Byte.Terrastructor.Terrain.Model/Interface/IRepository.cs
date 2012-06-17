@@ -8,7 +8,7 @@ namespace Byte.Terrastructor.Terrain.Model.Interface
         event Action<T> ItemAdded;
         event Action<T> ItemRemoved;
         IEnumerable<T> Items { get; }
-        void Add(T textureGroup);
-        void Remove(T textureGroup);
+        void Add(T item);
+        void Remove(T item);
     }
 }
