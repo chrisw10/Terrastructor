@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Byte.Terrastructor.Heightmap;
 using Byte.Terrastructor.Terrain.Model.Interface;
@@ -34,6 +35,11 @@ namespace Byte.Terrastructor.Terrain.Model
                                                                              textureGroupRange.UpperBound >= height);
 
             return range;
+        }
+
+        public IEnumerable<TextureGroup> TextureGroups
+        {
+            get { return _textureGroupRepository.Items; }
         }
     }
 }

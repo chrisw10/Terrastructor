@@ -5,16 +5,16 @@ namespace Byte.Terrastructor.Terrain.Model
 {
     public class Texture : IEquatable<Texture>, IProbabilityWeightedItem
     {
-        public Texture(int number, int probabilityWeight, Rotation rotation)
+        public Texture(int number, int probabilityWeight, TextureRotation textureRotation)
         {
             Number = number;
             ProbabilityWeight = probabilityWeight;
-            Rotation = rotation;
+            TextureRotation = textureRotation;
         }
 
         public int Number { get; private set; }
         public int ProbabilityWeight { get; private set; }
-        public Rotation Rotation { get; private set; }
+        public TextureRotation TextureRotation { get; private set; }
 
         public bool Equals(Texture other)
         {
@@ -22,7 +22,7 @@ namespace Byte.Terrastructor.Terrain.Model
                    (ReferenceEquals(this, other) ||
                     other.Number == Number &&
                     other.ProbabilityWeight.Equals(ProbabilityWeight) &&
-                    Equals(other.Rotation, Rotation));
+                    Equals(other.TextureRotation, TextureRotation));
         }
 
         public override bool Equals(object obj)
@@ -38,7 +38,7 @@ namespace Byte.Terrastructor.Terrain.Model
             {
                 int result = Number;
                 result = (result*397) ^ ProbabilityWeight.GetHashCode();
-                result = (result*397) ^ Rotation.GetHashCode();
+                result = (result*397) ^ TextureRotation.GetHashCode();
                 return result;
             }
         }

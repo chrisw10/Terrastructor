@@ -12,7 +12,7 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         [Test]
         public void TestTextureAdd()
         {
-            var texture = new Texture(0, 0, Rotation.Any);
+            var texture = new Texture(0, 0, TextureRotation.Any);
 
             var textureGroup = new TextureGroup();
             textureGroup.Add(texture);
@@ -23,7 +23,7 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         [Test]
         public void TestTextureRemove()
         {
-            var texture = new Texture(0, 0, Rotation.Any);
+            var texture = new Texture(0, 0, TextureRotation.Any);
             var textureGroup = new TextureGroup();
             textureGroup.Add(texture);
 
@@ -35,7 +35,7 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         [Test]
         public void TestTextureAddedEvent()
         {
-            var texture = new Texture(0, 0, Rotation.Any);
+            var texture = new Texture(0, 0, TextureRotation.Any);
             var textureGroup = new TextureGroup();
             var wasTextureAdded = false;
 
@@ -49,7 +49,7 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         [Test]
         public void TestTextureRemovedEvent()
         {
-            var texture = new Texture(0, 0, Rotation.Any);
+            var texture = new Texture(0, 0, TextureRotation.Any);
             var textureGroup = new TextureGroup();
             var wasTextureRemoved = false;
 

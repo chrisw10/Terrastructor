@@ -12,18 +12,18 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         [Test]
         public void TestCreate()
         {
-            var texture = new Texture(0, 1, Rotation.Any);
+            var texture = new Texture(0, 1, TextureRotation.Any);
 
             Assert.AreEqual(0, texture.Number);
             Assert.AreEqual(1, texture.ProbabilityWeight);
-            Assert.AreEqual(Rotation.Any, texture.Rotation);
+            Assert.AreEqual(TextureRotation.Any, texture.TextureRotation);
         }
 
         [Test]
         public void TestEquals()
         {
-            var firstTexture = new Texture(0, 1, Rotation.Any);
-            var secondTexture = new Texture(0, 1, Rotation.Any);
+            var firstTexture = new Texture(0, 1, TextureRotation.Any);
+            var secondTexture = new Texture(0, 1, TextureRotation.Any);
 
             Assert.AreEqual(firstTexture, secondTexture);
         }
@@ -31,8 +31,8 @@ namespace Byte.Terrastructor.Terrain.Model.Tests
         [Test]
         public void TestNotEquals()
         {
-            var firstTexture = new Texture(0, 1, Rotation.Any);
-            var secondTexture = new Texture(1, 0, Rotation.North);
+            var firstTexture = new Texture(0, 1, TextureRotation.Any);
+            var secondTexture = new Texture(1, 0, TextureRotation.North);
 
             Assert.AreNotEqual(firstTexture, secondTexture);
         }

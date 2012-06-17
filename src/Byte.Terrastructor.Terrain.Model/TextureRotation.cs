@@ -1,6 +1,6 @@
 ﻿namespace Byte.Terrastructor.Terrain.Model
 {
-    public enum Rotation
+    public enum TextureRotation
     {
         Any,
         North,

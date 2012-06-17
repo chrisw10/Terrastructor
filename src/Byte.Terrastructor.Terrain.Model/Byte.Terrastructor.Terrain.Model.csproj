@@ -55,7 +55,7 @@
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomItemRetriever.cs" />
-    <Compile Include="Rotation.cs" />
+    <Compile Include="TextureRotation.cs" />
     <Compile Include="Texture.cs" />
     <Compile Include="TextureGroup.cs" />
     <Compile Include="TextureGroupRange.cs" />

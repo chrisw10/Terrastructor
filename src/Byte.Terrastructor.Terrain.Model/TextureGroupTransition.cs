@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Byte.Terrastructor.Terrain.Model
+﻿namespace Byte.Terrastructor.Terrain.Model
 {
     public class TextureGroupTransition
     {
@@ -12,6 +7,6 @@ namespace Byte.Terrastructor.Terrain.Model
 
         public TextureGroup StraightEdges { get; set; }
         public TextureGroup ConcaveCorners { get; set; }
-        public TextureGroup ConvexConrers { get; set; }
+        public TextureGroup ConvexCorners { get; set; }
     }
 }
